@@ -5,13 +5,15 @@ import setActiveComponent from '../actions';
 
 import Home from '../components/Home';
 import ContactUs from '../components/ContactUs';
+import AboutUs from '../components/AboutUs';
 
 class ComponentManager extends Component {
   constructor(props) {
     super(props);
     this.componentMap = {
       Home,
-      ContactUs
+      ContactUs,
+      AboutUs
     };
   }
 
@@ -21,16 +23,14 @@ class ComponentManager extends Component {
 
   componentWillReceiveProps(nextProps) {
     ReactDOM.render(
-      React.createElement(this.componentMap[nextProps.activeComponent]),
+      React.createElement(this.componentMap[nextProps.activeComponent], this.props),
       document.getElementById('componentContainer')
     );
   }
   render() {
     return (<div>
       <nav>
-      <a href="javascript:void(0)" onClick={() => this.props.setActiveComponent('Home')}>Home</a>
-        <span> | </span>
-        <a href="javascript:void(0)" onClick={() => this.props.setActiveComponent('ContactUs')}>Contact Us</a>
+        <a href="javascript:void(0)" onClick={() => this.props.setActiveComponent('Home')}>Home</a>
       </nav>
       <h2>{this.props.activeComponent}</h2>
       <div id="componentContainer"></div>
