@@ -29,10 +29,6 @@ class ComponentManager extends Component {
   }
   render() {
     return (<div>
-      <nav>
-        <a href="javascript:void(0)" onClick={() => this.props.setActiveComponent('Home')}>Home</a>
-      </nav>
-      <h2>{this.props.activeComponent}</h2>
       <div id="componentContainer"></div>
     </div>);
   }
